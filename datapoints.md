@@ -1,0 +1,11 @@
+- Job Posting {Referal form submission}
+    - Title of the Job Posting
+    - Date of posting
+    - OP Name
+    - OP Contact
+    - Role Name
+    - Company Name
+    - Job Description
+    - Expected Salary Range
+
+- Upload of CV {PDF}
