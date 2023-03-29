@@ -1,1 +1,1 @@
-jsut a test file
+just a test file
