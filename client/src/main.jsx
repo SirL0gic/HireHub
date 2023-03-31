@@ -8,6 +8,9 @@ import './index.css'
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+//Styling
+import "./App.css";
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
   <React.StrictMode>

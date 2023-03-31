@@ -10,14 +10,20 @@ let MainPage = () => {
         <Row className="row-one">
           <Col className="col-one" sm={1} md={4} lg={1}>
             <div className="navigation">
-              <button>
+              <button className="feed-button">
                 <img
-                  className="save-image"
+                  className="feed-image"
                   alt="image-icon"
                   src="/job.png"
                 />
               </button>
-              <button>Upload CV icon</button>
+              <button className="apply-button">
+              <img
+                  className="apply-image"
+                  alt="image-icon"
+                  src="/cv.png"
+                />
+              </button>
             </div>
           </Col>
           <Col className="col-two" sm={4} md={4} lg={4}></Col>
