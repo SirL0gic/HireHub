@@ -5,7 +5,7 @@ let Title = () => {
     <div className="center-box">
       <h1>{title_text}</h1>
       <h2>{subtitle_text}</h2>
-      <p><a className="link-animation" href="#" id="style-2" data-replace="The Best"><span>Hire Now</span></a></p>
+      <p><a className="link-animation" href="/feed" id="style-2" data-replace="The Best"><span>Hire Now</span></a></p>
     </div>
   );
 };
