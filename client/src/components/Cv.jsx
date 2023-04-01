@@ -1,29 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from 'react-modal';
+import axios from "axios";
+
+
+
 import "../App.css";
 
-let Modal = (props) => {
-  const handleFileInputChange = (event) => {
-    props.setFile(event.target.files[0]);
+const UploadModal = ({ isOpen, onRequestClose }) => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileSelect = (event) => {
+    setSelectedFile(event.target.files[0]);
   };
 
-  const handleCloseClick = () => {
-    props.onClose();
+  const handleUpload = async () => {
+    if (!selectedFile) {
+      alert("Please select a file to upload.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+
+    try {
+      const response = await axios.post("/upload", formData);
+      console.log(response.data);
+      alert("File uploaded successfully.");
+    } catch (error) {
+      console.error(error);
+      alert("Error uploading file.");
+    }
   };
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <span className="close" onClick={handleCloseClick}>
-          &times;
-        </span>
-        <h2>Upload PDF</h2>
-        <form onSubmit={props.onSubmit}>
-          <input type="file" onChange={handleFileInputChange} />
-          <button type="submit">Upload</button>
-        </form>
-      </div>
-    </div>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      contentLabel="Upload Modal"
+      className="upload-modal"
+      overlayClassName="upload-modal-overlay"
+      ariaHideApp={false}
+    >
+      <span className="close" onClick={onRequestClose}>
+        &times;
+      </span>
+      <h2>Upload PDF</h2>
+      <form>
+        <input type="file" onChange={handleFileSelect} />
+        <button type="button" onClick={handleUpload}>
+          Upload
+        </button>
+      </form>
+    </Modal>
   );
-}
+};
 
-export default Modal;
+export default UploadModal;

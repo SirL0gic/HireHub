@@ -1,12 +1,23 @@
 //Module Imports
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
-import Modal from "./CV";
+import UploadModal from "./Cv"
 
 //Styling
 import "../App.css";
 
 let MainPage = () => {
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    console.log(1);
+  };
 
 
     return (
@@ -21,13 +32,14 @@ let MainPage = () => {
                   src="/job.png"
                 />
               </button>
-              <button className="apply-button">
+              <button className="apply-button" onClick={openModal}>
               <img
                   className="apply-image"
                   alt="image-icon"
                   src="/cv.png"
                 />
               </button>
+              <UploadModal isOpen={modalIsOpen} onRequestClose={closeModal} />
             </div>
           </Col>
           <Col className="col-two" sm={4} md={4} lg={4}></Col>
