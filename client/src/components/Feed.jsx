@@ -1,10 +1,14 @@
 //Module Imports
 import { Container, Row, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import Modal from "./CV";
 
 //Styling
 import "../App.css";
 
 let MainPage = () => {
+
+
     return (
         <Container fluid className="main-container">
         <Row className="row-one">
