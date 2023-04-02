@@ -21,7 +21,7 @@ body {
   text-decoration: none;
   color: #18272f;
   font-weight: 700;
-  vertical-align:middle;
+  vertical-align: middle;
   font-size: 18px;
 }
 
@@ -31,7 +31,6 @@ body {
   position: absolute;
   width: 100%;
   left: 0;
-  
 }
 .link-animation::before {
   background-color: #54b3d6;
@@ -69,121 +68,118 @@ body {
   transform: translate3d(-200%, 0, 0);
 }
 
-
 .col-one {
   background-color: #181819;
   height: 100vh;
-  width: 120px!important; 
+  width: 120px !important;
 }
 .col-two {
-    background-color: black;
-    height: 100vh;
-  }
+  background-color: black;
+  height: 100vh;
+}
 
-.col-three{
-    background-color:#FEFFFE;
-    height: 100vh;
+.col-three {
+  background-color: #fefffe;
+  height: 100vh;
 }
 
 .feed-button {
-    margin-top: 25px;
-    background: none;
-    border: none;
-    padding: 10px;
-    margin-left: 10px;
-    border-radius: 10px;
+  margin-top: 25px;
+  background: none;
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
 }
 
 .feed-button:hover {
-    margin-top: 25px;
-    background: #2E2E30;
-    margin-left: 10px;
-    border: none;
-    padding: 10px;
-    filter: brightness(200%);
-    border-radius: 10px;
+  margin-top: 25px;
+  background: #2e2e30;
+  margin-left: 10px;
+  border: none;
+  padding: 10px;
+  filter: brightness(200%);
+  border-radius: 10px;
 }
 
 .feed-image {
-    height: 40px;
-    width: 40px;
+  height: 40px;
+  width: 40px;
 }
 
 .apply-button {
-    margin-top: 25px;
-    background: none;
-    padding: 10px;
-    border: none;
-    margin-left: 10px;
-    border-radius: 10px;
+  margin-top: 25px;
+  background: none;
+  padding: 10px;
+  border: none;
+  margin-left: 10px;
+  border-radius: 10px;
 }
 
-.apply-button:hover{
-    margin-top: 25px;
-    background: #2E2E30;
-    padding: 10px;
-    border: none;
-    margin-left: 10px;
-    filter: brightness(200%);
-    border-radius: 10px;
+.apply-button:hover {
+  margin-top: 25px;
+  background: #2e2e30;
+  padding: 10px;
+  border: none;
+  margin-left: 10px;
+  filter: brightness(200%);
+  border-radius: 10px;
 }
 
 .apply-image {
-    height: 40px;
-    width: 40px;
-
+  height: 40px;
+  width: 40px;
 }
 
 .upload-modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    width: 500px;
-    border-radius: 5px;
-  }
-  
-  .upload-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  input[type="file"] {
-    margin-bottom: 10px;
-  }
-  
-  button[type="button"] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button[type="button"]:hover {
-    background-color: #0062cc;
-  }
-  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  width: 500px;
+  border-radius: 5px;
+}
+
+.upload-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+}
+
+button[type="button"] {
+  background-color: #111111;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="button"]:hover {
+  background-color: #111111;
+}

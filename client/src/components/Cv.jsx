@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import axios from "axios";
-
-
 
 import "../App.css";
 
@@ -23,6 +21,7 @@ const UploadModal = ({ isOpen, onRequestClose }) => {
     formData.append("file", selectedFile);
 
     try {
+      axios.defaults.baseURL = "http://localhost:5000";
       const response = await axios.post("/upload", formData);
       console.log(response.data);
       alert("File uploaded successfully.");
