@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import axios from "axios";
 
+//Styling
 import "../App.css";
 
 const UploadModal = ({ isOpen, onRequestClose }) => {

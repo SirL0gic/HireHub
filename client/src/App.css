@@ -1,3 +1,11 @@
+@media (min-width: 992px)
+{
+    .col-lg-7 {
+        flex: 0 0 auto;
+        width: 60.3% !important;
+    }
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -183,3 +191,5 @@ button[type="button"] {
 button[type="button"]:hover {
   background-color: #111111;
 }
+
+

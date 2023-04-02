@@ -1,7 +1,8 @@
 const express = require("express");
 const multer = require("multer");
-const cors = require("cors"); //for cross orgin requests
 
+//for cross orgin requests
+const cors = require("cors"); 
 
 const app = express();
 const port = 5000;
@@ -21,6 +22,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// Route for testing basic server
 app.get('/', (req, res) => {
   res.send('Hi Abis and Fayyaz');
 });
