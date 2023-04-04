@@ -69,7 +69,7 @@ let JobCard = () => {
         },
   ];
 
-
+//PLEASE REFER CODESAND BOX, ANOTHE COMPONETN NEEDS TO BE MADE. which will render everything
 
   return (
     <>
