@@ -9,13 +9,13 @@ let JobCard = (props) => {
     <>
       <Container className="job-card-container">
         <Row>
-          <Col sm={1} md={4} lg={1} className="job-card-col-one">
+          <Col  lg={1} className="job-card-col-one">
             <img className="job-card-image" src={props.Image} alt="pic" />
           </Col>
           <Col>
-            <p>{props.Title}</p>
-            <p>{props.Company}</p>
-            <p>{props.Location}</p>
+            <h4 className="job-card-job-title">{props.Title}</h4>
+            <p className="job-card-job-company">{props.Company}</p>
+            <p className="job-card-job-location">{props.Location}</p>
           </Col>
         </Row>
       </Container>

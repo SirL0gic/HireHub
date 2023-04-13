@@ -168,18 +168,18 @@ body {
   cursor: pointer;
 }
 
-form {
+.modal-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
 }
 
-input[type="file"] {
+.modal-form-input[type="file"] {
   margin-bottom: 10px;
 }
 
-button[type="button"] {
+.modal-form-button[type="button"] {
   background-color: #111111;
   color: white;
   border: none;
@@ -188,7 +188,7 @@ button[type="button"] {
   cursor: pointer;
 }
 
-button[type="button"]:hover {
+.modal-form-button[type="button"]:hover {
   background-color: #111111;
 }
 
@@ -196,15 +196,25 @@ button[type="button"]:hover {
 .job-card-container{
     background-color: #181819;
     margin-top:30px;
-    padding: 10px;
+    padding-top: 10px;
     border-radius: 20px;
     color: white;
     width: 90% !important;
+    height:23% !important ;
 }
 
 .job-card-image{
     height: 70px;
     width: 70px;
+}
+
+.job-card-job-location{
+    color: #8B8A8B;
+    margin-bottom: 5px;
+}
+
+.job-card-job-company{
+  margin-bottom: 5px;
 }
 
 .job-card-col-one{
