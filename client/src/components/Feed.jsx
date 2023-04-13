@@ -2,6 +2,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import UploadModal from "./Cv";
+import JobCard from "./joblist";
 
 //Styling
 import "../App.css";
@@ -101,7 +102,9 @@ const [joblist, setJobList] = [
             <UploadModal isOpen={modalIsOpen} onRequestClose={closeModal} />
           </div>
         </Col>
-        <Col className="col-two" sm={4} md={4} lg={4}></Col>
+        <Col className="col-two" sm={4} md={4} lg={4}>
+          <JobCard Image="/person.png" Title="Data Scientist" Company="Microsoft" Location="Dubai"/>
+        </Col>
         <Col className="col-three" sm={7} md={4} lg={7}></Col>
       </Row>
     </Container>

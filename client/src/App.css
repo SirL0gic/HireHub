@@ -193,3 +193,22 @@ button[type="button"]:hover {
 }
 
 
+.job-card-container{
+    background-color: #181819;
+    margin-top:30px;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    width: 90% !important;
+}
+
+.job-card-image{
+    height: 70px;
+    width: 70px;
+}
+
+.job-card-col-one{
+    width: 100px !important;
+}
+
+

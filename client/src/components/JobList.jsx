@@ -1,19 +1,21 @@
 //Module Imports
 import { Container, Row, Col } from "react-bootstrap";
 
+//Styling
+import "../App.css";
 
 let JobCard = (props) => {
   return (
     <>
-      <Container>
+      <Container className="job-card-container">
         <Row>
-          <Col>
-            <img src={props.Image} alt="pic" />
+          <Col sm={1} md={4} lg={1} className="job-card-col-one">
+            <img className="job-card-image" src={props.Image} alt="pic" />
           </Col>
           <Col>
-            <h3>{props.Title}</h3>
-            <h4>{props.Company}</h4>
-            <h4>{props.Location}</h4>
+            <p>{props.Title}</p>
+            <p>{props.Company}</p>
+            <p>{props.Location}</p>
           </Col>
         </Row>
       </Container>
