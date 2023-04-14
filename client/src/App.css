@@ -221,4 +221,6 @@ body {
     width: 100px !important;
 }
 
-
+.render-list{
+  list-style-type: none;
+}

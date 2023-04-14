@@ -8,77 +8,79 @@ import JobCard from "./JobList";
 import "../App.css";
 
 let MainPage = () => {
-
-  // Bool for modal
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
   //Date
   var date = new Date();
   var dateString = date.toLocaleDateString("en-GB");
 
+  // Bool for modal
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-// get all job listings from the DB
-const [joblist, setJobList] = [
-  {
+  // get all job listings from the DB
+  const [joblist, setJobList] = useState([
+    {
       ID: 1,
       Title: "Software Engineer",
       Date: dateString,
       Company: "ABC Inc.",
-      Location:"",
+      Location: "Dubai",
       Position: "Full-time",
       Description: "Developed and maintained software applications for clients",
       Contact: "John Doe (john.doe@abcinc.com)",
-      Image:"",
-      },
-      
-      {
+      Image: "/person.png",
+    },
+
+    {
       ID: 2,
       Title: "Marketing Manager",
       Date: dateString,
       Company: "XYZ Corp.",
-      Location:"",
+      Location: "Dubai",
       Position: "Contract",
-      Description: "Developed and executed marketing campaigns for new product launches",
+      Description:
+        "Developed and executed marketing campaigns for new product launches",
       Contact: "Jane Smith (jane.smith@xyzcorp.com)",
-      Image:"",
-      },
-      
-      {
+      Image: "/person.png",
+    },
+
+    {
       ID: 3,
       Title: "Sales Associate",
       Date: dateString,
       Company: "123 Enterprises",
-      Location:"",
+      Location: "Dubai",
       Position: "Part-time",
-      Description: "Assisted customers with purchases and maintained store inventory",
+      Description:
+        "Assisted customers with purchases and maintained store inventory",
       Contact: "Mark Johnson (mark.johnson@123enterprises.com)",
-      Image:"",
-      },
-      
-      {
+      Image: "/person.png",
+    },
+
+    {
       ID: 4,
       Title: "Human Resources Manager",
       Date: dateString,
       Company: "Acme Corporation",
-      Location:"",
+      Location: "Dubai",
       Position: "Full-time",
-      Description: "Managed employee relations, benefits, and performance evaluations",
+      Description:
+        "Managed employee relations, benefits, and performance evaluations",
       Contact: "Sara Lee (sara.lee@acmecorp.com)",
-      Image:"",
-      },
-      
-      {
+      Image: "/person.png",
+    },
+
+    {
       ID: 5,
       Title: "Graphic Designer",
       Date: dateString,
       Company: "Design Co.",
-      Location:"",
+      Location: "Dubai",
       Position: "Freelance",
-      Description: "Created designs for various marketing and advertising materials",
+      Description:
+        "Created designs for various marketing and advertising materials",
       Contact: "Mike Brown (mike.brown@designco.com)",
-      Image:"",
-      },
-];
+      Image: "/person.png",
+    },
+  ]);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -103,7 +105,20 @@ const [joblist, setJobList] = [
           </div>
         </Col>
         <Col className="col-two" sm={4} md={4} lg={4}>
-          <JobCard Image="/person.png" Title="Data Scientist" Company="Microsoft" Location="Dubai"/>
+          <ul className="render-list">
+            {joblist.map((eachitem, index) => {
+              return (
+                <li key={index}>
+                  <JobCard
+                    Image={eachitem.Image}
+                    Title={eachitem.Title}
+                    Company={eachitem.Company}
+                    Location={eachitem.Location}
+                  />
+                </li>
+              );
+            })}
+          </ul>
         </Col>
         <Col className="col-three" sm={7} md={4} lg={7}></Col>
       </Row>
