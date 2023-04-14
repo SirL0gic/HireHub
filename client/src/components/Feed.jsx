@@ -1,8 +1,8 @@
 //Module Imports
 import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
-import UploadModal from "./Cv";
-import JobCard from "./joblist";
+import UploadModal from "./CV";
+import JobCard from "./JobList";
 
 //Styling
 import "../App.css";
