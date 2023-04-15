@@ -224,3 +224,25 @@ body {
 .render-list{
   list-style-type: none;
 }
+
+.search-container{
+  border-radius: 20px;
+  background-color: #181819;
+  color: #575758;
+  margin-top: 20px;
+  height: 10%;
+  width: 80%;
+}
+
+.search-bar{
+  margin-top: 12px;
+  margin-left: 50px;
+  width: 80%;
+  background-color: #181819;
+  color: #575758;
+  border: none;
+}
+
+.search-bar:focus{
+  outline: none;
+}

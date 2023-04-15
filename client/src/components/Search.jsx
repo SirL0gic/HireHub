@@ -10,6 +10,7 @@ let SearchBar = ({ handleSearch }) => {
 
   return (
     <input
+    className="search-bar"
       type="text"
       placeholder="Search..."
       value={searchTerm}
