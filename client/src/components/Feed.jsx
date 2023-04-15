@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import React, { useState } from "react";
 import UploadModal from "./CV";
 import JobCard from "./JobList";
+import SearchBar from "./Search";
 
 //Styling
 import "../App.css";
@@ -90,6 +91,26 @@ let MainPage = () => {
     setModalIsOpen(false);
   };
 
+
+   // state to hold filtered job listings
+   const [filteredJobs, setFilteredJobs] = useState(joblist);
+
+   // function to filter job listings based on search term
+   const handleSearch = (searchTerm) => {
+    if (searchTerm === "") {
+      setFilteredJobs(joblist);
+    } else {
+      const filtered = joblist.filter((job) => {
+        const titleMatch = job.Title.toLowerCase().includes(searchTerm.toLowerCase());
+        const companyMatch = job.Company.toLowerCase().includes(searchTerm.toLowerCase());
+        const locationMatch = job.Location.toLowerCase().includes(searchTerm.toLowerCase());
+        const positionMatch = job.Position.toLowerCase().includes(searchTerm.toLowerCase());
+        return titleMatch || companyMatch || locationMatch || positionMatch;
+      });
+      setFilteredJobs(filtered);
+    }
+  };
+
   return (
     <Container fluid className="main-container">
       <Row className="row-one">
@@ -105,8 +126,9 @@ let MainPage = () => {
           </div>
         </Col>
         <Col className="col-two" sm={4} md={4} lg={4}>
+        <SearchBar handleSearch={handleSearch} />
           <ul className="render-list">
-            {joblist.map((eachitem, index) => {
+            {filteredJobs.map((eachitem, index) => {
               return (
                 <li key={index}>
                   <JobCard
