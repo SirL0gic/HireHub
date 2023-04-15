@@ -91,20 +91,27 @@ let MainPage = () => {
     setModalIsOpen(false);
   };
 
+  // state to hold filtered job listings
+  const [filteredJobs, setFilteredJobs] = useState(joblist);
 
-   // state to hold filtered job listings
-   const [filteredJobs, setFilteredJobs] = useState(joblist);
-
-   // function to filter job listings based on search term
-   const handleSearch = (searchTerm) => {
+  // function to filter job listings based on search term
+  const handleSearch = (searchTerm) => {
     if (searchTerm === "") {
       setFilteredJobs(joblist);
     } else {
       const filtered = joblist.filter((job) => {
-        const titleMatch = job.Title.toLowerCase().includes(searchTerm.toLowerCase());
-        const companyMatch = job.Company.toLowerCase().includes(searchTerm.toLowerCase());
-        const locationMatch = job.Location.toLowerCase().includes(searchTerm.toLowerCase());
-        const positionMatch = job.Position.toLowerCase().includes(searchTerm.toLowerCase());
+        const titleMatch = job.Title.toLowerCase().includes(
+          searchTerm.toLowerCase()
+        );
+        const companyMatch = job.Company.toLowerCase().includes(
+          searchTerm.toLowerCase()
+        );
+        const locationMatch = job.Location.toLowerCase().includes(
+          searchTerm.toLowerCase()
+        );
+        const positionMatch = job.Position.toLowerCase().includes(
+          searchTerm.toLowerCase()
+        );
         return titleMatch || companyMatch || locationMatch || positionMatch;
       });
       setFilteredJobs(filtered);
@@ -127,8 +134,9 @@ let MainPage = () => {
         </Col>
         <Col className="col-two" sm={4} md={4} lg={4}>
           <div className="search-container">
-            <SearchBar  handleSearch={handleSearch} />
-            </div>
+            <img className="search-image" alt="image-icon" src="/search.png" />
+            <SearchBar handleSearch={handleSearch} />
+          </div>
           <ul className="render-list">
             {filteredJobs.map((eachitem, index) => {
               return (
