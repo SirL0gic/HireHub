@@ -7,6 +7,7 @@ let SearchBar = ({ handleSearch }) => {
     setSearchTerm(event.target.value);
     handleSearch(event.target.value);
   };
+
   return (
     <input
       type="text"
