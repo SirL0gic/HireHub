@@ -15,6 +15,14 @@ let MainPage = () => {
 
   // Bool for modal
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   // get all job listings from the DB
   const [joblist, setJobList] = useState([
@@ -83,13 +91,7 @@ let MainPage = () => {
     },
   ]);
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
 
   // state to hold filtered job listings
   const [filteredJobs, setFilteredJobs] = useState(joblist);
