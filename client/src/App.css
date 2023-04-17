@@ -252,6 +252,7 @@ body {
   height: 28px;
   width: 28px;
   margin-left: 10px;
+  margin-bottom: 6px;
 }
 
 .upper-box{
@@ -262,4 +263,5 @@ body {
 
 .new-job-form-button{
   margin-left: 15px;
+  margin-top:20px;
 }
