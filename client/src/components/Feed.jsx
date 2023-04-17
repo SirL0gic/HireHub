@@ -15,7 +15,7 @@ let MainPage = () => {
 
   // Bool for modal
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  
+
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -135,9 +135,12 @@ let MainPage = () => {
           </div>
         </Col>
         <Col className="col-two" sm={4} md={4} lg={4}>
+          <div className="upper-box">
           <div className="search-container">
             <img className="search-image" alt="image-icon" src="/search.png" />
             <SearchBar handleSearch={handleSearch} />
+          </div>
+          <button className="new-job-form-button">New Post</button>
           </div>
           <ul className="render-list">
             {filteredJobs.map((eachitem, index) => {
