@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import UploadModal from "./CV";
 import JobCard from "./JobList";
 import SearchBar from "./Search";
+import Post from "./NewJob";
 
 //Styling
 import "../App.css";
@@ -13,7 +14,7 @@ let MainPage = () => {
   var date = new Date();
   var dateString = date.toLocaleDateString("en-GB");
 
-  // Bool for modal
+  // Bool for cv modal
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
@@ -22,6 +23,18 @@ let MainPage = () => {
 
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+
+
+  //Bool for new job modal
+  const [postModalIsOpen, setPostModalIsOpen] = useState(false);
+
+  const openPostModal = () => {
+    setPostModalIsOpen(true);
+  };
+
+  const closePostModal = () => {
+    setPostModalIsOpen(false);
   };
 
   // get all job listings from the DB
@@ -140,7 +153,10 @@ let MainPage = () => {
             <img className="search-image" alt="image-icon" src="/search.png" />
             <SearchBar handleSearch={handleSearch} />
           </div>
-          <button className="new-job-form-button">New Post</button>
+          <button className="new-job-form-button" onClick={openPostModal}>
+          <img className="add-image" alt="image-icon" src="/add.png" />
+          </button>
+          <Post isOpenJobForm={postModalIsOpen} onRequestCloseJobForm={closePostModal}/>
           </div>
           <ul className="render-list">
             {filteredJobs.map((eachitem, index) => {

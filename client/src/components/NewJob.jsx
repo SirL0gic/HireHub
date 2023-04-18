@@ -6,6 +6,12 @@ import axios from "axios";
 import "../App.css";
 
 let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
+
+    let handleSubmit = (event) => {
+        event.preventDefault();
+
+    };
+
   return (
     <Modal
       isOpen={isOpenJobForm}
@@ -20,7 +26,8 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
       </span>
       <h2>New Job Post</h2>
 
-      <form className="modal-form-job-post"></form>
+      <form className="modal-form-job-post" onSubmit={handleSubmit}
+      ></form>
     </Modal>
   );
 };

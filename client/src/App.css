@@ -235,9 +235,11 @@ body {
 }
 
 .search-bar {
-  margin-top: 9px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-left: 10px;
   width: 80%;
+  height: 42px;
   background-color: #181819;
   color: #575758;
   border: none;
@@ -249,19 +251,55 @@ body {
 }
 
 .search-image {
-  height: 28px;
-  width: 28px;
+  height: 25px;
+  width: 25px;
   margin-left: 10px;
   margin-bottom: 6px;
 }
 
-.upper-box{
+.upper-box {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
+  margin-left: 30px;
 }
 
-
-.new-job-form-button{
+.new-job-form-button {
   margin-left: 15px;
-  margin-top:20px;
+  margin-top: 16px;
+  padding: 5px;
+  background: none;
+  border: none;
+}
+
+.new-job-form-button:hover {
+  background: #2e2e30;
+  border: none;
+  padding: 5px;
+  filter: brightness(200%);
+  border-radius: 80px;
+}
+
+.add-image {
+  height: 50px;
+  width: 50px;
+}
+
+.upload-modal-job-post {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  width: 500px;
+  border-radius: 5px;
+}
+
+.upload-modal-overlay-job-post {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
