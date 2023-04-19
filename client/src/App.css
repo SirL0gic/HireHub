@@ -6,10 +6,8 @@
   }
 }
 
-
 @media only screen and (max-width: 767px) {
-
-  .col-one{
+  .col-one {
     height: 20vh !important;
     width: 200% !important;
   }
@@ -19,7 +17,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
 
 /* homepage styling */
 .center-box {
@@ -89,7 +86,6 @@ body {
 }
 /* homepage styling end */
 
-
 .col-one {
   background-color: #181819;
   height: 100vh;
@@ -153,6 +149,11 @@ body {
   width: 40px;
 }
 
+.cv-upload-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .upload-modal {
   position: absolute;
   top: 50%;
@@ -195,6 +196,7 @@ body {
 
 .modal-form-button[type="button"] {
   background-color: #111111;
+  margin-top: 20px;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -203,7 +205,7 @@ body {
 }
 
 .modal-form-button[type="button"]:hover {
-  background-color: #111111;
+  background-color: #111111a1;
 }
 
 .job-card-container {
@@ -239,7 +241,6 @@ body {
   padding-left: 0px;
   margin-top: 30px;
 }
-
 
 /* Styling for search area, search bar, and button for posting */
 .search-container {
@@ -322,20 +323,22 @@ body {
 }
 /* Styling for search area, search bar, and button for posting end */
 
-
 /* Styling for new job post form */
+
+.new-job-post-form-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
 .form-container {
   width: 600px;
   margin: 0 auto;
 }
 
-.form-group {
-  margin-bottom: 20px;
+.modal-form-job-post input {
+  margin-left: 10px;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
+.modal-form-job-post label {
   font-weight: bold;
 }
 
@@ -345,31 +348,29 @@ body {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
-}
-
-.form-control:focus {
-  border-color: #6cb2eb;
-  outline: none;
+  font-size: 14px;
 }
 
 .form-control textarea {
   height: 150px;
-  resize: none;
+  width: 100%;
+  /* resize: none; */
 }
 
-.input-group {
-  display: flex;
+#Position {
+  margin-left: 10px;
 }
 
-.input-group .form-control {
-  margin-right: 10px;
+.btn-container {
+  text-align: center;
+  margin-top: 20px;
 }
 
-.btn {
+.btn-sub {
   display: inline-block;
+  text-align: center;
   padding: 10px 20px;
-  background-color: #6cb2eb;
+  background-color: #181819;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -377,7 +378,7 @@ body {
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: #4d90e4;
+.btn-sub:hover {
+  background-color: #1818198e;
 }
 /* Styling for new job post form end */

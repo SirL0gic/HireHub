@@ -42,6 +42,21 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
 
   let handleSubmit = (event) => {
     event.preventDefault();
+    // Check if all fields are filled
+    if (!formData.Title || !formData.Company || !formData.Country || !formData.City || !formData.Position || !formData.Description || !formData.Contact) {
+      alert("Please fill in all fields.");
+      return;
+    }
+    // Send form data to backend using Axios
+    axios.post("/upload-job-data", formData)
+      .then((response) => {
+        console.log(response);
+        // handle response as needed
+      })
+      .catch((error) => {
+        console.log(error);
+        // handle error as needed
+      });
   };
 
   return (
@@ -56,11 +71,11 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
       <span className="close" onClick={onRequestCloseJobForm}>
         &times;
       </span>
-      <h2>New Job Post</h2>
+      <h2 className="new-job-post-form-title">New Job Post</h2>
 
       <form className="modal-form-job-post" onSubmit={handleSubmit}>
         <div className="form-control">
-          <labal htmlFor="Title">Title:</labal>
+          <label htmlFor="Title">Title:</label>
           <input
             type="text"
             id="Title"
@@ -70,69 +85,73 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           />
         </div>
         <div className="form-control">
-        <label htmlFor="Company">Company:</label>
-        <input
-          type="text"
-          id="Company"
-          name="Company"
-          value={formData.Company}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="form-control">
-        <label htmlFor="Country">Country:</label>
-        <input
-          type="text"
-          id="Country"
-          name="Country"
-          value={formData.Country}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="form-control">
-        <label htmlFor="City">City:</label>
-        <input
-          type="text"
-          id="City"
-          name="City"
-          value={formData.City}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="form-control">
-        <label htmlFor="Position">Position:</label>
-        <select
-          id="Position"
-          name="Position"
-          value={formData.Position}
-          onChange={handleInputChange}
-        >
-          <option value="">Select</option>
-          <option value="Full-time">Full-time</option>
-          <option value="Part-time">Part-time</option>
-          <option value="Internship">Internship</option>
-        </select>
-      </div>
-      <div className="form-control">
-        <label htmlFor="Description">Description:</label>
-        <textarea
-          id="Description"
-          name="Description"
-          value={formData.Description}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className="form-control">
-        <label htmlFor="Contact">Contact:</label>
-        <input
-          type="email"
-          id="Contact"
-          name="Contact"
-          value={formData.Contact}
-          onChange={handleInputChange}
-        />
-      </div>
-      <button type="submit">Submit</button>
+          <label htmlFor="Company">Company:</label>
+          <input
+            type="text"
+            id="Company"
+            name="Company"
+            value={formData.Company}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="Country">Country:</label>
+          <input
+            type="text"
+            id="Country"
+            name="Country"
+            value={formData.Country}
+            onChange={handleLocationInputChange}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="City">City:</label>
+          <input
+            type="text"
+            id="City"
+            name="City"
+            value={formData.City}
+            onChange={handleLocationInputChange}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="Position">Position:</label>
+          <select
+            id="Position"
+            name="Position"
+            value={formData.Position}
+            onChange={handleInputChange}
+          >
+            <option value="">Select</option>
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Internship">Internship</option>
+          </select>
+        </div>
+        <div className="form-control">
+          <label htmlFor="Description">Description:</label>
+          <textarea
+            id="Description"
+            name="Description"
+            value={formData.Description}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="Contact">Contact:</label>
+          <input
+            type="email"
+            id="Contact"
+            name="Contact"
+            value={formData.Contact}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="btn-container">
+          <button className="btn-sub" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     </Modal>
   );

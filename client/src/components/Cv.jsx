@@ -44,7 +44,7 @@ const UploadModal = ({ isOpen, onRequestClose }) => {
       <span className="close" onClick={onRequestClose}>
         &times;
       </span>
-      <h2>Upload PDF</h2>
+      <h3 className="cv-upload-title">Upload PDF</h3>
       <form className="modal-form">
         <input className="modal-form-input" type="file" onChange={handleFileSelect} />
         <button className="modal-form-button" type="button" onClick={handleUpload}>
