@@ -1,16 +1,10 @@
+/* media query for various screen sizes */
 @media (min-width: 992px) {
   .col-lg-7 {
     flex: 0 0 auto;
     width: 59.5% !important;
   }
 }
-
-/* @media only screen 
-  and (min-device-width: 390px) 
-  and (max-device-width: 844px)  {
-  
- 
-} */
 
 
 @media only screen and (max-width: 767px) {
@@ -20,12 +14,14 @@
     width: 200% !important;
   }
 }
-
+/* media query for various screen sizes end */
 
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
+/* homepage styling */
 .center-box {
   position: absolute;
   top: 50%;
@@ -91,6 +87,8 @@ body {
 .link-animation:hover span {
   transform: translate3d(-200%, 0, 0);
 }
+/* homepage styling end */
+
 
 .col-one {
   background-color: #181819;
@@ -242,6 +240,8 @@ body {
   margin-top: 30px;
 }
 
+
+/* Styling for search area, search bar, and button for posting */
 .search-container {
   border-radius: 30px;
   background-color: #181819;
@@ -320,3 +320,64 @@ body {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+/* Styling for search area, search bar, and button for posting end */
+
+
+/* Styling for new job post form */
+.form-container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-control:focus {
+  border-color: #6cb2eb;
+  outline: none;
+}
+
+.form-control textarea {
+  height: 150px;
+  resize: none;
+}
+
+.input-group {
+  display: flex;
+}
+
+.input-group .form-control {
+  margin-right: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6cb2eb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #4d90e4;
+}
+/* Styling for new job post form end */
