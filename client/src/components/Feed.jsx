@@ -25,7 +25,6 @@ let MainPage = () => {
     setModalIsOpen(false);
   };
 
-
   //Bool for new job modal
   const [postModalIsOpen, setPostModalIsOpen] = useState(false);
 
@@ -102,9 +101,67 @@ let MainPage = () => {
       Contact: "Mike Brown (mike.brown@designco.com)",
       Image: "/person.png",
     },
+    {
+      ID: 6,
+      Title: "Product Manager",
+      Date: dateString,
+      Company: "Innovate Ltd.",
+      Location: "London",
+      Position: "Full-time",
+      Description:
+        "Managed product roadmap and worked with cross-functional teams",
+      Contact: "Adam Smith (adam.smith@innovate.com)",
+      Image: "/person.png",
+    },
+
+    {
+      ID: 7,
+      Title: "Accountant",
+      Date: dateString,
+      Company: "Numbers Inc.",
+      Location: "New York",
+      Position: "Full-time",
+      Description: "Managed financial records and prepared tax documents",
+      Contact: "Lisa Green (lisa.green@numbersinc.com)",
+      Image: "/person.png",
+    },
+
+    {
+      ID: 8,
+      Title: "Project Manager",
+      Date: dateString,
+      Company: "Globe Co.",
+      Location: "Tokyo",
+      Position: "Contract",
+      Description: "Managed software development projects for clients",
+      Contact: "Ken Yamamoto (ken.yamamoto@globeco.com)",
+      Image: "/person.png",
+    },
+
+    {
+      ID: 9,
+      Title: "Customer Service Representative",
+      Date: dateString,
+      Company: "Support Inc.",
+      Location: "Sydney",
+      Position: "Part-time",
+      Description: "Assisted customers with product inquiries and complaints",
+      Contact: "Emily Johnson (emily.johnson@supportinc.com)",
+      Image: "/person.png",
+    },
+
+    {
+      ID: 10,
+      Title: "Web Developer",
+      Date: dateString,
+      Company: "Code Co.",
+      Location: "San Francisco",
+      Position: "Freelance",
+      Description: "Developed and maintained websites for clients",
+      Contact: "Chris Lee (chris.lee@codeco.com)",
+      Image: "/person.png",
+    },
   ]);
-
-
 
   // state to hold filtered job listings
   const [filteredJobs, setFilteredJobs] = useState(joblist);
@@ -149,29 +206,38 @@ let MainPage = () => {
         </Col>
         <Col className="col-two" sm={4} md={4} lg={4}>
           <div className="upper-box">
-          <div className="search-container">
-            <img className="search-image" alt="image-icon" src="/search.png" />
-            <SearchBar handleSearch={handleSearch} />
+            <div className="search-container">
+              <img
+                className="search-image"
+                alt="image-icon"
+                src="/search.png"
+              />
+              <SearchBar handleSearch={handleSearch} />
+            </div>
+            <button className="new-job-form-button" onClick={openPostModal}>
+              <img className="add-image" alt="image-icon" src="/add.png" />
+            </button>
+            <Post
+              isOpenJobForm={postModalIsOpen}
+              onRequestCloseJobForm={closePostModal}
+            />
           </div>
-          <button className="new-job-form-button" onClick={openPostModal}>
-          <img className="add-image" alt="image-icon" src="/add.png" />
-          </button>
-          <Post isOpenJobForm={postModalIsOpen} onRequestCloseJobForm={closePostModal}/>
+          <div className="job-list-container">
+            <ul className="render-list">
+              {filteredJobs.map((eachitem, index) => {
+                return (
+                  <li key={index}>
+                    <JobCard
+                      Image={eachitem.Image}
+                      Title={eachitem.Title}
+                      Company={eachitem.Company}
+                      Location={eachitem.Location}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-          <ul className="render-list">
-            {filteredJobs.map((eachitem, index) => {
-              return (
-                <li key={index}>
-                  <JobCard
-                    Image={eachitem.Image}
-                    Title={eachitem.Title}
-                    Company={eachitem.Company}
-                    Location={eachitem.Location}
-                  />
-                </li>
-              );
-            })}
-          </ul>
         </Col>
         <Col className="col-three" sm={7} md={4} lg={7}></Col>
       </Row>

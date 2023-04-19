@@ -29,7 +29,12 @@ app.get('/', (req, res) => {
 
 // Route for handling file uploads
 app.post("/upload", upload.single("file"), (req, res) => {
-  res.send("File uploaded successfully.");
+  res.send("File uploaded Successfully.");
+});
+
+app.post("/upload-job-data",(res,req)=>{
+  res.send("Job Posted Successfully.");
+
 });
 
 // Start the server
