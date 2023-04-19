@@ -257,6 +257,7 @@ let MainPage = () => {
             Location={allJobInfo.Location}
             Position={allJobInfo.Position}
             Description={allJobInfo.Description}
+            Date={allJobInfo.Date}
             Contact={allJobInfo.Contact}
           />
         </Col>

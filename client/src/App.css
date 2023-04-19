@@ -244,7 +244,6 @@ body {
   margin-top: 30px;
 }
 
-
 /* styling for scroll  */
 .job-list-container {
   overflow-y: scroll;
@@ -268,7 +267,6 @@ body {
   background-color: white;
 }
 /* styling for scroll end  */
-
 
 /* Styling for search area, search bar, and button for posting */
 .search-container {
@@ -411,18 +409,13 @@ body {
 }
 /* Styling for new job post form end */
 
-
-.all-info-box{
+.all-info-box {
   /* position: absolute; */
-  width: 60%;
-
-  margin-top: 200px;
-  margin-left: 240px;
-
-
+  width: 95%;
+  margin-top: 30px;
+  margin-left: 30px;
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-
 }
