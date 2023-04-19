@@ -37,9 +37,6 @@ let MainPage = () => {
     setPostModalIsOpen(false);
   };
 
-  
-
-
   // get all job listings from the DB
   const [joblist, setJobList] = useState([
     {
@@ -194,6 +191,13 @@ let MainPage = () => {
     }
   };
 
+
+  const [allJobInfo, setallJobInfo] = useState("");
+
+  let handlejobclick = (index, item) => {
+    setallJobInfo(item);
+  }
+
   return (
     <Container fluid className="main-container">
       <Row className="row-one">
@@ -232,11 +236,13 @@ let MainPage = () => {
                 return (
                   <li key={index}>
                     <JobCard
+                      index={index}
+                      item={eachitem}
                       Image={eachitem.Image}
                       Title={eachitem.Title}
                       Company={eachitem.Company}
                       Location={eachitem.Location}
-              
+                      onClick={(index, item) => handlejobclick(index, item)}
                     />
                   </li>
                 );
@@ -245,15 +251,14 @@ let MainPage = () => {
           </div>
         </Col>
         <Col className="col-three" sm={7} md={4} lg={7}>
-        <AllInformationCard
-        Title="Software Engineer"
-        Company="ABC Inc."
-        Location="Dubai"
-        Position="Full-time"
-        Description="Developed and maintained software applications for clients"
-        Contact="John Doe (john.doe@abcinc.com)"
-      />
-  
+          <AllInformationCard
+            Title={allJobInfo.Title}
+            Company={allJobInfo.Company}
+            Location={allJobInfo.Location}
+            Position={allJobInfo.Position}
+            Description={allJobInfo.Description}
+            Contact={allJobInfo.Contact}
+          />
         </Col>
       </Row>
     </Container>
