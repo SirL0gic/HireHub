@@ -242,6 +242,8 @@ body {
   margin-top: 30px;
 }
 
+
+/* styling for scroll  */
 .job-list-container {
   overflow-y: scroll;
   max-height: calc(100vh - 100px); /* adjust height as needed */
@@ -263,7 +265,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: white;
 }
-
+/* styling for scroll end  */
 
 
 /* Styling for search area, search bar, and button for posting */

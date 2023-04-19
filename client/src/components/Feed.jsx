@@ -5,6 +5,7 @@ import UploadModal from "./CV";
 import JobCard from "./JobList";
 import SearchBar from "./Search";
 import Post from "./NewJob";
+import AllInformationCard from "./Information";
 
 //Styling
 import "../App.css";
@@ -35,6 +36,9 @@ let MainPage = () => {
   const closePostModal = () => {
     setPostModalIsOpen(false);
   };
+
+  
+
 
   // get all job listings from the DB
   const [joblist, setJobList] = useState([
@@ -232,6 +236,7 @@ let MainPage = () => {
                       Title={eachitem.Title}
                       Company={eachitem.Company}
                       Location={eachitem.Location}
+              
                     />
                   </li>
                 );
@@ -239,7 +244,17 @@ let MainPage = () => {
             </ul>
           </div>
         </Col>
-        <Col className="col-three" sm={7} md={4} lg={7}></Col>
+        <Col className="col-three" sm={7} md={4} lg={7}>
+        <AllInformationCard
+        Title="Software Engineer"
+        Company="ABC Inc."
+        Location="Dubai"
+        Position="Full-time"
+        Description="Developed and maintained software applications for clients"
+        Contact="John Doe (john.doe@abcinc.com)"
+      />
+  
+        </Col>
       </Row>
     </Container>
   );

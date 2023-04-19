@@ -5,6 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import "../App.css";
 
 let JobCard = (props) => {
+
   return (
     <>
       <Container className="job-card-container">
