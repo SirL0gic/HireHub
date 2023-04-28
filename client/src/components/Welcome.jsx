@@ -39,9 +39,10 @@ let Title = ({ setIsSubmitted }) => {
   return (
     <div className="center-box">
       <h1>HireHub</h1>
-      <h2>Revolutionizing the way you hire</h2>
+      <h3>Revolutionizing the way you hire</h3>
       <form onSubmit={handleSubmit}>
         <input
+        className="welcome-email-input"
           type="email"
           placeholder="Enter your email"
           value={email}
@@ -50,7 +51,7 @@ let Title = ({ setIsSubmitted }) => {
         {!isEmailValid && (
           <p style={{ color: "red" }}>Please enter a valid email address</p>
         )}
-        <button type="submit">Submit</button>
+        <button className="entry-button" type="submit">Try Now</button>
       </form>
     </div>
   );
