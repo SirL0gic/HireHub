@@ -125,8 +125,32 @@ app.post("/upload", upload.single("file"), (req, res) => {
   );
 });
 
-app.post("/upload-job-data", (res, req) => {
-  res.send("Job Posted Successfully.");
+
+// Route for new applications
+app.post("/upload-job-data", (req, res) => {
+  const formData = req.body;
+
+  MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error connecting to database");
+      return;
+    }
+
+    const db = client.db("Applications");
+    const collection = db.collection("List");
+
+    //Insert the new document into the collection.
+    collection.insertOne(formData, function (err, res) {
+      console.log("There is an error:", err);
+      console.log(res); //Response from mongo db
+      client.close();
+    });
+  });
+
+  res.send({
+    message: "Job Posted Successfully.",
+  });
 });
 
 // Start the server
