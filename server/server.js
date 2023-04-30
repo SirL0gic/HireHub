@@ -21,8 +21,15 @@ const port = 4000;
 //Enable CORS for all routes.
 app.use(cors());
 
+//Parse JSON request bodies.
+app.use(bodyParser.json({ limit: "10mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "10mb" }));
+
 // Create a GitHub API token and set it as an environment variable
-const githubToken = "";
+const githubToken = process.env.GITHUB_TOKEN;
+
+//The password for mongo db is retrieved from the .env file.
+const url = process.env.MONGODB_URI;
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -40,6 +47,35 @@ const upload = multer({ storage: storage });
 app.get("/", (req, res) => {
   res.send("Hi Abis and Fayyaz");
 });
+
+//Endpoint to fetch all data from the DB.
+app.get("/all-data", (req, res) => {
+  MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error connecting to database");
+      return;
+    }
+
+    const db = client.db("Applications");
+    const collection = db.collection("List");
+
+    //Perform an operation on the collection, such as finding all documents.
+    collection.find({}).toArray((err, documents) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send("Error performing operation on collection");
+        return;
+      }
+
+      //Return the result to the client.
+      res.send(documents);
+      console.log("Data sent to front-end");
+      client.close();
+    });
+  });
+});
+
 
 // Route for handling file uploads
 app.post("/upload", upload.single("file"), (req, res) => {

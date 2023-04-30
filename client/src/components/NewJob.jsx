@@ -49,6 +49,7 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
       return;
     }
     // Send form data to backend using Axios
+    axios.defaults.baseURL = "http://localhost:4000";
     axios.post("/upload-job-data", formData)
       .then((response) => {
         console.log(response);
