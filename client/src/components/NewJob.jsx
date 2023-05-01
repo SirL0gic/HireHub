@@ -8,6 +8,10 @@ import "../App.css";
 
 let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
   // useState to store values from the form.
+  //Date
+  var date = new Date();
+  var dateString = date.toLocaleDateString("en-GB");
+
   const [formData, setFormData] = useState({
     title: "",
     company: "",
@@ -16,6 +20,7 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
       city: "",
     },
     position: "",
+    date: dateString,
     description: "",
     contact: "",
   });
@@ -50,7 +55,8 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
     // }
     // Send form data to backend using Axios
     axios.defaults.baseURL = "http://localhost:4000";
-    axios.post("/upload-job-data", formData)
+    axios
+      .post("/upload-job-data", formData)
       .then((response) => {
         console.log(response);
         // handle response as needed
