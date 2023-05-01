@@ -128,40 +128,33 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
 
 // Route for new applications
-app.post("/upload-job-data", (req, res) => {
-  const formData = req.body;
-  console.log(formData)
+app.post("/upload-job-data", async (req, res) => {
+   var databaseName = "Applications";
+   var collectionName= "List";
+   
+  try {
+    const formData = req.body;
+    console.log(formData);
 
-  MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Error connecting to database");
-      return;
-    }
-
-    const db = client.db("Applications");
-    const collection = db.collection("List");
+    const client = await MongoClient.connect(url, { useNewUrlParser: true });
+    const db = client.db(databaseName);
+    const collection = db.collection(collectionName);
 
     // Insert the new document into the collection.
-    collection.insertOne(formData, function (err, result) {
-      if (err) {
-        console.log("Error inserting document:", err);
-        res.status(500).send("Error inserting document into database");
-        client.close();
-        return;
-      }
+    const result = await collection.insertOne(formData);
 
-      console.log("New job document inserted into collection");
-      client.close();
+    console.log("New job document inserted into collection");
+    client.close();
 
-      res.status(200).json({
-        message: "Job Posted Successfully.",
-        result,
-      });
+    res.status(200).json({
+      message: "Job Posted Successfully.",
+      result,
     });
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error inserting document into database");
+  }
 });
-
 
 
 // Route for test db connection.
