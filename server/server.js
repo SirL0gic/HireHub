@@ -52,7 +52,7 @@ app.get("/", (req, res) => {
 //Endpoint to fetch all data from the DB.
 app.get("/get-all-jobs", async (req, res) => {
   var databaseName = "Applications";
-  var collectionName= "List";
+  var collectionName = "List";
 
   try {
     const client = await MongoClient.connect(url, { useNewUrlParser: true });
@@ -73,7 +73,6 @@ app.get("/get-all-jobs", async (req, res) => {
     res.status(500).send("Error retrieving documents from database");
   }
 });
-
 
 // Route for handling file uploads
 app.post("/upload", upload.single("file"), (req, res) => {
@@ -123,12 +122,10 @@ app.post("/upload", upload.single("file"), (req, res) => {
   );
 });
 
-
-
 // Route for new applications
 app.post("/upload-job-data", async (req, res) => {
-   var databaseName = "Applications";
-   var collectionName= "List";
+  var databaseName = "Applications";
+  var collectionName = "List";
 
   try {
     const formData = req.body;
@@ -154,6 +151,8 @@ app.post("/upload-job-data", async (req, res) => {
   }
 });
 
+//Inside the function, we use await to wait for the MongoClient.connect method to return a Promise, which gives us a client object we can use to interact with the database. We then use the await keyword again to wait for the insertOne method to complete before we move on to closing the connection and sending the response to the client.
+//In the catch block, we handle any errors that occur during the execution of the function.
 
 // Route for test db connection.
 app.get("/test", (req, res) => {
