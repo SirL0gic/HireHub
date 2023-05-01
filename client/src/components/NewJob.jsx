@@ -44,10 +44,10 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
   let handleSubmit = (event) => {
     event.preventDefault();
     // Check if all fields are filled
-    if (!formData.Title || !formData.Company || !formData.Country || !formData.City || !formData.Position || !formData.Description || !formData.Contact) {
-      alert("Please fill in all fields.");
-      return;
-    }
+    // if (!formData.Title || !formData.Company || !formData.Country || !formData.City || !formData.Position || !formData.Description || !formData.Contact) {
+    //   alert("Please fill in all fields.");
+    //   return;
+    // }
     // Send form data to backend using Axios
     axios.defaults.baseURL = "http://localhost:4000";
     axios.post("/upload-job-data", formData)
@@ -80,9 +80,9 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <label htmlFor="Title">Title:</label>
           <input
             type="text"
-            id="Title"
-            name="Title"
-            value={formData.Title}
+            id="title"
+            name="title"
+            value={formData.title}
             onChange={handleInputChange}
           />
         </div>
@@ -90,9 +90,9 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <label htmlFor="Company">Company:</label>
           <input
             type="text"
-            id="Company"
-            name="Company"
-            value={formData.Company}
+            id="company"
+            name="company"
+            value={formData.company}
             onChange={handleInputChange}
           />
         </div>
@@ -100,9 +100,9 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <label htmlFor="Country">Country:</label>
           <input
             type="text"
-            id="Country"
-            name="Country"
-            value={formData.Country}
+            id="country"
+            name="country"
+            value={formData.country}
             onChange={handleLocationInputChange}
           />
         </div>
@@ -110,18 +110,18 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <label htmlFor="City">City:</label>
           <input
             type="text"
-            id="City"
-            name="City"
-            value={formData.City}
+            id="city"
+            name="city"
+            value={formData.city}
             onChange={handleLocationInputChange}
           />
         </div>
         <div className="form-control">
           <label htmlFor="Position">Position:</label>
           <select
-            id="Position"
-            name="Position"
-            value={formData.Position}
+            id="position"
+            name="position"
+            value={formData.position}
             onChange={handleInputChange}
           >
             <option value="">Select</option>
@@ -133,9 +133,9 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
         <div className="form-control">
           <label htmlFor="Description">Description:</label>
           <textarea
-            id="Description"
-            name="Description"
-            value={formData.Description}
+            id="description"
+            name="description"
+            value={formData.description}
             onChange={handleInputChange}
           />
         </div>
@@ -143,9 +143,9 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <label htmlFor="Contact">Contact:</label>
           <input
             type="email"
-            id="Contact"
-            name="Contact"
-            value={formData.Contact}
+            id="contact"
+            name="contact"
+            value={formData.contact}
             onChange={handleInputChange}
           />
         </div>

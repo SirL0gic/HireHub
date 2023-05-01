@@ -76,7 +76,6 @@ app.get("/all-data", (req, res) => {
   });
 });
 
-
 // Route for handling file uploads
 app.post("/upload", upload.single("file"), (req, res) => {
   const file = req.file;
@@ -125,10 +124,10 @@ app.post("/upload", upload.single("file"), (req, res) => {
   );
 });
 
-
 // Route for new applications
 app.post("/upload-job-data", (req, res) => {
   const formData = req.body;
+  // console.log(formData)
 
   MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
     if (err) {
@@ -140,17 +139,50 @@ app.post("/upload-job-data", (req, res) => {
     const db = client.db("Applications");
     const collection = db.collection("List");
 
-    //Insert the new document into the collection.
-    collection.insertOne(formData, function (err, res) {
-      console.log("There is an error:", err);
-      console.log(res); //Response from mongo db
+    // Insert the new document into the collection.
+    collection.insertOne(formData, function (err, result) {
+      if (err) {
+        console.log("Error inserting document:", err);
+        res.status(500).send("Error inserting document into database");
+        client.close();
+        return;
+      }
+
+      console.log("New job document inserted into collection");
       client.close();
+
+      res.status(200).json({
+        message: "Job Posted Successfully.",
+        result,
+      });
     });
   });
+});
 
-  res.send({
-    message: "Job Posted Successfully.",
+app.get("/test", (req, res) => {
+  const { MongoClient, ServerApiVersion } = require("mongodb");
+  const uri = process.env.MONGODB_URI;
+
+  // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
   });
+
+  async function run() {
+    try {
+      // Connect the client to the server	(optional starting in v4.7)
+      await client.connect();
+      // Send a ping to confirm a successful connection
+    } finally {
+      // Ensures that the client will close when you finish/error
+      await client.close();
+    }
+  }
+  run().catch(console.dir);
 });
 
 // Start the server
