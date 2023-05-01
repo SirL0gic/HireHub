@@ -46,36 +46,34 @@ const upload = multer({ storage: storage });
 
 // Route for testing basic server
 app.get("/", (req, res) => {
-  res.send("Hi Abis and Fayyaz");
+  res.send("This server is working");
 });
 
 //Endpoint to fetch all data from the DB.
-app.get("/all-data", (req, res) => {
-  MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("Error connecting to database");
-      return;
-    }
+app.get("/get-all-jobs", async (req, res) => {
+  var databaseName = "Applications";
+  var collectionName= "List";
 
-    const db = client.db("Applications");
-    const collection = db.collection("List");
+  try {
+    const client = await MongoClient.connect(url, { useNewUrlParser: true });
+    const db = client.db(databaseName);
+    const collection = db.collection(collectionName);
 
-    //Perform an operation on the collection, such as finding all documents.
-    collection.find({}).toArray((err, documents) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send("Error performing operation on collection");
-        return;
-      }
+    const result = await collection.find({}).toArray();
 
-      //Return the result to the client.
-      res.send(documents);
-      console.log("Data sent to front-end");
-      client.close();
+    console.log("All job documents retrieved from collection");
+    client.close();
+
+    res.status(200).json({
+      message: "All jobs retrieved successfully.",
+      result,
     });
-  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error retrieving documents from database");
+  }
 });
+
 
 // Route for handling file uploads
 app.post("/upload", upload.single("file"), (req, res) => {
@@ -131,7 +129,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 app.post("/upload-job-data", async (req, res) => {
    var databaseName = "Applications";
    var collectionName= "List";
-   
+
   try {
     const formData = req.body;
     console.log(formData);
