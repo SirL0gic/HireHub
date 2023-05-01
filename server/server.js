@@ -4,6 +4,7 @@ const multer = require("multer");
 const request = require("request");
 const bodyParser = require("body-parser"); //for handling request body
 const MongoClient = require("mongodb").MongoClient; //for mongodb
+const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
 
@@ -124,10 +125,12 @@ app.post("/upload", upload.single("file"), (req, res) => {
   );
 });
 
+
+
 // Route for new applications
 app.post("/upload-job-data", (req, res) => {
   const formData = req.body;
-  // console.log(formData)
+  console.log(formData)
 
   MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
     if (err) {
@@ -159,30 +162,23 @@ app.post("/upload-job-data", (req, res) => {
   });
 });
 
+
+
+// Route for test db connection.
 app.get("/test", (req, res) => {
-  const { MongoClient, ServerApiVersion } = require("mongodb");
+  const mongoose = require("mongoose");
   const uri = process.env.MONGODB_URI;
 
-  // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-  const client = new MongoClient(uri, {
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    },
-  });
+  mongoose
+    .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+      console.log("Connected to MongoDB Atlas!");
+    })
+    .catch((error) => {
+      console.log("Error connecting to MongoDB Atlas:", error);
+    });
 
-  async function run() {
-    try {
-      // Connect the client to the server	(optional starting in v4.7)
-      await client.connect();
-      // Send a ping to confirm a successful connection
-    } finally {
-      // Ensures that the client will close when you finish/error
-      await client.close();
-    }
-  }
-  run().catch(console.dir);
+  res.send("All good");
 });
 
 // Start the server
