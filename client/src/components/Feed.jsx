@@ -67,14 +67,12 @@ let MainPage = () => {
     };
     fetchData();
   }, []);
-  
-
 
   const [allJobInfo, setallJobInfo] = useState("");
 
   let handlejobclick = (index, item) => {
     setallJobInfo(item);
-  }
+  };
 
   return (
     <Container fluid className="main-container">

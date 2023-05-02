@@ -63,11 +63,7 @@ app.get("/get-all-jobs", async (req, res) => {
 
     console.log("All jobs retrieved from collection");
     client.close();
-
-    // res.status(200).json({
-    //   message: "All jobs retrieved successfully.",
-    //   result,
-    // });
+    
     res.send(result);
     // console.log(result)
   } catch (err) {
@@ -173,8 +169,6 @@ app.get("/test", (req, res) => {
   res.send("All good");
 });
 
-
-
 //ignore
 const jobss = [
   {
@@ -192,7 +186,7 @@ const jobss = [
   {
     ID: 2,
     Title: "Marketing Manager",
-    Date:  "1/1/23",
+    Date: "1/1/23",
     Company: "XYZ Corp.",
     Location: "Dubai",
     Position: "Contract",
@@ -205,7 +199,7 @@ const jobss = [
   {
     ID: 3,
     Title: "Sales Associate",
-    Date:  "1/1/23",
+    Date: "1/1/23",
     Company: "123 Enterprises",
     Location: "Dubai",
     Position: "Part-time",
@@ -218,7 +212,7 @@ const jobss = [
   {
     ID: 4,
     Title: "Human Resources Manager",
-    Date:  "1/1/23",
+    Date: "1/1/23",
     Company: "Acme Corporation",
     Location: "Dubai",
     Position: "Full-time",
@@ -231,7 +225,7 @@ const jobss = [
   {
     ID: 5,
     Title: "Graphic Designer",
-    Date:  "1/1/23",
+    Date: "1/1/23",
     Company: "Design Co.",
     Location: "Dubai",
     Position: "Freelance",
@@ -243,7 +237,7 @@ const jobss = [
   {
     ID: 6,
     Title: "Product Manager",
-    Date:  "1/1/23",
+    Date: "1/1/23",
     Company: "Innovate Ltd.",
     Location: "London",
     Position: "Full-time",
@@ -256,7 +250,7 @@ const jobss = [
   {
     ID: 7,
     Title: "Accountant",
-    Date:  "1/1/23",
+    Date: "1/1/23",
     Company: "Numbers Inc.",
     Location: "New York",
     Position: "Full-time",
@@ -268,7 +262,7 @@ const jobss = [
   {
     ID: 8,
     Title: "Project Manager",
-    Date:  "1/1/23",
+    Date: "1/1/23",
     Company: "Globe Co.",
     Location: "Tokyo",
     Position: "Contract",
@@ -280,7 +274,7 @@ const jobss = [
   {
     ID: 9,
     Title: "Customer Service Representative",
-    Date:  "1/1/23",
+    Date: "1/1/23",
     Company: "Support Inc.",
     Location: "Sydney",
     Position: "Part-time",
@@ -292,7 +286,7 @@ const jobss = [
   {
     ID: 10,
     Title: "Web Developer",
-    Date:  "1/1/23",
+    Date: "1/1/23",
     Company: "Code Co.",
     Location: "San Francisco",
     Position: "Freelance",
@@ -302,28 +296,30 @@ const jobss = [
   },
 ];
 
-
 // Query to insert the above test jobs
 async function insertJobs(jobss) {
   const uri = process.env.MONGODB_URI;
-  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
   var databaseName = "Applications";
   var collectionName = "List";
 
   try {
     await client.connect();
-    console.log('Connected to Atlas cluster');
+    console.log("Connected to Atlas cluster");
 
     const db = client.db(databaseName);
     const collection = db.collection(collectionName);
-    
+
     await collection.insertMany(jobss);
-    console.log('Inserted documents into collection');
+    console.log("Inserted documents into collection");
   } catch (err) {
     console.error(err);
   } finally {
     await client.close();
-    console.log('Connection to Atlas cluster closed');
+    console.log("Connection to Atlas cluster closed");
   }
 }
 

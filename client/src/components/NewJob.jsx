@@ -20,7 +20,7 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
     Date: dateString,
     Description: "",
     Contact: "",
-    Image:"/person.png",
+    Image: "/person.png",
   });
 
   // updates the form data state using a functional update based on the current input element value.
@@ -32,25 +32,9 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
     }));
   };
 
-  // updates the form data state using a functional update based on the current input element value.
-  // const handleLocationInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setFormData((prevFormData) => ({
-  //     ...prevFormData,
-  //     location: {
-  //       ...prevFormData.location,
-  //       [name]: value,
-  //     },
-  //   }));
-  // };
-
   let handleSubmit = (event) => {
     event.preventDefault();
-    // Check if all fields are filled
-    // if (!formData.Title || !formData.Company || !formData.Country || !formData.City || !formData.Position || !formData.Description || !formData.Contact) {
-    //   alert("Please fill in all fields.");
-    //   return;
-    // }
+
     // Send form data to backend using Axios
     axios.defaults.baseURL = "http://localhost:4000";
     axios
@@ -110,26 +94,6 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
             onChange={handleInputChange}
           />
         </div>
-        {/* <div className="form-control">
-          <label htmlFor="Country">Country:</label>
-          <input
-            type="text"
-            id="country"
-            name="country"
-            value={formData.country}
-            onChange={handleLocationInputChange}
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="City">City:</label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            value={formData.city}
-            onChange={handleLocationInputChange}
-          />
-        </div> */}
         <div className="form-control">
           <label htmlFor="Position">Position:</label>
           <select
