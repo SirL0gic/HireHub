@@ -1,11 +1,12 @@
 //Module Imports
 import { Container, Row, Col } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import UploadModal from "./CV";
 import JobCard from "./JobList";
 import SearchBar from "./Search";
 import Post from "./NewJob";
 import AllInformationCard from "./Information";
+import axios from "axios";
 
 //Styling
 import "../App.css";

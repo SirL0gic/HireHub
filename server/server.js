@@ -64,10 +64,12 @@ app.get("/get-all-jobs", async (req, res) => {
     console.log("All job documents retrieved from collection");
     client.close();
 
-    res.status(200).json({
-      message: "All jobs retrieved successfully.",
-      result,
-    });
+    // res.status(200).json({
+    //   message: "All jobs retrieved successfully.",
+    //   result,
+    // });
+    res.send(result);
+    console.log(result)
   } catch (err) {
     console.error(err);
     res.status(500).send("Error retrieving documents from database");

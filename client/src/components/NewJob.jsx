@@ -23,6 +23,7 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
     date: dateString,
     description: "",
     contact: "",
+    image:"/person.png",
   });
 
   // updates the form data state using a functional update based on the current input element value.
