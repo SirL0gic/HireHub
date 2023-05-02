@@ -173,6 +173,158 @@ app.get("/test", (req, res) => {
   res.send("All good");
 });
 
+
+const jobss = [
+  {
+    ID: 1,
+    Title: "Software Engineer",
+    Date: "1/1/23",
+    Company: "ABC Inc.",
+    Location: "Dubai",
+    Position: "Full-time",
+    Description: "Developed and maintained software applications for clients",
+    Contact: "John Doe (john.doe@abcinc.com)",
+    Image: "/person.png",
+  },
+
+  {
+    ID: 2,
+    Title: "Marketing Manager",
+    Date:  "1/1/23",
+    Company: "XYZ Corp.",
+    Location: "Dubai",
+    Position: "Contract",
+    Description:
+      "Developed and executed marketing campaigns for new product launches",
+    Contact: "Jane Smith (jane.smith@xyzcorp.com)",
+    Image: "/person.png",
+  },
+
+  {
+    ID: 3,
+    Title: "Sales Associate",
+    Date:  "1/1/23",
+    Company: "123 Enterprises",
+    Location: "Dubai",
+    Position: "Part-time",
+    Description:
+      "Assisted customers with purchases and maintained store inventory",
+    Contact: "Mark Johnson (mark.johnson@123enterprises.com)",
+    Image: "/person.png",
+  },
+
+  {
+    ID: 4,
+    Title: "Human Resources Manager",
+    Date:  "1/1/23",
+    Company: "Acme Corporation",
+    Location: "Dubai",
+    Position: "Full-time",
+    Description:
+      "Managed employee relations, benefits, and performance evaluations",
+    Contact: "Sara Lee (sara.lee@acmecorp.com)",
+    Image: "/person.png",
+  },
+
+  {
+    ID: 5,
+    Title: "Graphic Designer",
+    Date:  "1/1/23",
+    Company: "Design Co.",
+    Location: "Dubai",
+    Position: "Freelance",
+    Description:
+      "Created designs for various marketing and advertising materials",
+    Contact: "Mike Brown (mike.brown@designco.com)",
+    Image: "/person.png",
+  },
+  {
+    ID: 6,
+    Title: "Product Manager",
+    Date:  "1/1/23",
+    Company: "Innovate Ltd.",
+    Location: "London",
+    Position: "Full-time",
+    Description:
+      "Managed product roadmap and worked with cross-functional teams",
+    Contact: "Adam Smith (adam.smith@innovate.com)",
+    Image: "/person.png",
+  },
+
+  {
+    ID: 7,
+    Title: "Accountant",
+    Date:  "1/1/23",
+    Company: "Numbers Inc.",
+    Location: "New York",
+    Position: "Full-time",
+    Description: "Managed financial records and prepared tax documents",
+    Contact: "Lisa Green (lisa.green@numbersinc.com)",
+    Image: "/person.png",
+  },
+
+  {
+    ID: 8,
+    Title: "Project Manager",
+    Date:  "1/1/23",
+    Company: "Globe Co.",
+    Location: "Tokyo",
+    Position: "Contract",
+    Description: "Managed software development projects for clients",
+    Contact: "Ken Yamamoto (ken.yamamoto@globeco.com)",
+    Image: "/person.png",
+  },
+
+  {
+    ID: 9,
+    Title: "Customer Service Representative",
+    Date:  "1/1/23",
+    Company: "Support Inc.",
+    Location: "Sydney",
+    Position: "Part-time",
+    Description: "Assisted customers with product inquiries and complaints",
+    Contact: "Emily Johnson (emily.johnson@supportinc.com)",
+    Image: "/person.png",
+  },
+
+  {
+    ID: 10,
+    Title: "Web Developer",
+    Date:  "1/1/23",
+    Company: "Code Co.",
+    Location: "San Francisco",
+    Position: "Freelance",
+    Description: "Developed and maintained websites for clients",
+    Contact: "Chris Lee (chris.lee@codeco.com)",
+    Image: "/person.png",
+  },
+];
+
+async function insertJobs(jobss) {
+  const uri = process.env.MONGODB_URI;
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  var databaseName = "Applications";
+  var collectionName = "List";
+
+  try {
+    await client.connect();
+    console.log('Connected to Atlas cluster');
+
+    const db = client.db(databaseName);
+    const collection = db.collection(collectionName);
+    
+    await collection.insertMany(jobss);
+    console.log('Inserted documents into collection');
+  } catch (err) {
+    console.error(err);
+  } finally {
+    await client.close();
+    console.log('Connection to Atlas cluster closed');
+  }
+}
+
+// insertJobs(jobss);
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
