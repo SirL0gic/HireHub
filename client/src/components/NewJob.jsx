@@ -15,10 +15,7 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
   const [formData, setFormData] = useState({
     title: "",
     company: "",
-    location: {
-      country: "",
-      city: "",
-    },
+    location: "",
     position: "",
     date: dateString,
     description: "",
@@ -36,16 +33,16 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
   };
 
   // updates the form data state using a functional update based on the current input element value.
-  const handleLocationInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      location: {
-        ...prevFormData.location,
-        [name]: value,
-      },
-    }));
-  };
+  // const handleLocationInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setFormData((prevFormData) => ({
+  //     ...prevFormData,
+  //     location: {
+  //       ...prevFormData.location,
+  //       [name]: value,
+  //     },
+  //   }));
+  // };
 
   let handleSubmit = (event) => {
     event.preventDefault();
@@ -104,6 +101,16 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           />
         </div>
         <div className="form-control">
+          <label htmlFor="Location">Location:</label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            value={formData.location}
+            onChange={handleInputChange}
+          />
+        </div>
+        {/* <div className="form-control">
           <label htmlFor="Country">Country:</label>
           <input
             type="text"
@@ -122,7 +129,7 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
             value={formData.city}
             onChange={handleLocationInputChange}
           />
-        </div>
+        </div> */}
         <div className="form-control">
           <label htmlFor="Position">Position:</label>
           <select
