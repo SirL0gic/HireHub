@@ -1,5 +1,12 @@
 # HireHub
-HireHub a web-based job application system designed to simplify the job search process for users. 
+
+Welcome to HireHub – the open-source job application system that simplifies the job search process! If you're tired of struggling through job search websites, HireHub is here to make your life easier. Created in React, HireHub allows you to directly contact job postings via email and upload your CV to our central data repository.
+
+But what sets HireHub apart from other job search websites is our focus on community. This project was created with our friends and family in mind, making it easy for you to apply for jobs within your own circle and give referrals. We understand that finding the right job can be a daunting task, and we wanted to create a platform that makes the process less overwhelming and more fun.
+
+So whether you're a recent graduate just starting your career or a seasoned professional looking for a new challenge, HireHub has got you covered. Our user-friendly interface and central data repository make it easy to keep track of your job applications, and with the ability to directly contact job postings, you can stand out from the crowd and increase your chances of landing your dream job.
+
+HireHub was created by me and my friend @fayyaz, and we're excited to share our project with you. As an open-source project, we welcome contributions from the community to help us continue to improve and expand our platform
 
 Demo: 
 ### Video Demo
