@@ -13,14 +13,14 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
   var dateString = date.toLocaleDateString("en-GB");
 
   const [formData, setFormData] = useState({
-    title: "",
-    company: "",
-    location: "",
-    position: "",
-    date: dateString,
-    description: "",
-    contact: "",
-    image:"/person.png",
+    Title: "",
+    Company: "",
+    Location: "",
+    Position: "",
+    Date: dateString,
+    Description: "",
+    Contact: "",
+    Image:"/person.png",
   });
 
   // updates the form data state using a functional update based on the current input element value.
@@ -85,8 +85,8 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <input
             type="text"
             id="title"
-            name="title"
-            value={formData.title}
+            name="Title"
+            value={formData.Title}
             onChange={handleInputChange}
           />
         </div>
@@ -95,8 +95,8 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <input
             type="text"
             id="company"
-            name="company"
-            value={formData.company}
+            name="Company"
+            value={formData.Company}
             onChange={handleInputChange}
           />
         </div>
@@ -105,8 +105,8 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <input
             type="text"
             id="location"
-            name="location"
-            value={formData.location}
+            name="Location"
+            value={formData.Location}
             onChange={handleInputChange}
           />
         </div>
@@ -134,8 +134,8 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <label htmlFor="Position">Position:</label>
           <select
             id="position"
-            name="position"
-            value={formData.position}
+            name="Position"
+            value={formData.Position}
             onChange={handleInputChange}
           >
             <option value="">Select</option>
@@ -148,8 +148,8 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <label htmlFor="Description">Description:</label>
           <textarea
             id="description"
-            name="description"
-            value={formData.description}
+            name="Description"
+            value={formData.Description}
             onChange={handleInputChange}
           />
         </div>
@@ -158,8 +158,8 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
           <input
             type="email"
             id="contact"
-            name="contact"
-            value={formData.contact}
+            name="Contact"
+            value={formData.Contact}
             onChange={handleInputChange}
           />
         </div>
