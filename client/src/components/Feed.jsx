@@ -54,11 +54,11 @@ let MainPage = () => {
     }
   };
 
-  axios.defaults.baseURL = "http://localhost:4000";
+  axios.defaults.baseURL = "http://18.222.113.94";
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/get-all-jobs");
+        const response = await axios.get("/api/get-all-jobs");
         setJobList(response.data);
         setFilteredJobs(response.data);
       } catch (error) {

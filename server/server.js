@@ -14,6 +14,7 @@ dotenv.config();
 
 //For cross orgin requests
 const cors = require("cors");
+const { error } = require("console");
 
 //Backend Config
 const app = express();
@@ -45,12 +46,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Route for testing basic server
-app.get("/", (req, res) => {
+app.get("/test", (req, res) => {
   res.send("This server is working");
 });
 
 //Endpoint to fetch all data from the DB.
-app.get("/get-all-jobs", async (req, res) => {
+app.get("/api/get-all-jobs", async (req, res) => {
   var databaseName = "Applications";
   var collectionName = "List";
 
@@ -73,7 +74,7 @@ app.get("/get-all-jobs", async (req, res) => {
 });
 
 // Route for handling file uploads
-app.post("/upload", upload.single("file"), (req, res) => {
+app.post("/api/upload", upload.single("file"), (req, res) => {
   const file = req.file;
 
   // Read the file contents
@@ -121,7 +122,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 });
 
 // Route for job new applications
-app.post("/upload-job-data", async (req, res) => {
+app.post("/api/upload-job-data", async (req, res) => {
   var databaseName = "Applications";
   var collectionName = "List";
 
@@ -153,7 +154,7 @@ app.post("/upload-job-data", async (req, res) => {
 //In the catch block, we handle any errors that occur during the execution of the function.
 
 // Route for test db connection.
-app.get("/test", (req, res) => {
+app.get("/api/test", (req, res) => {
   const mongoose = require("mongoose");
   const uri = process.env.MONGODB_URI;
 
@@ -166,7 +167,7 @@ app.get("/test", (req, res) => {
       console.log("Error connecting to MongoDB Atlas:", error);
     });
 
-  res.send("All good");
+  res.send("All good" );
 });
 
 //ignore

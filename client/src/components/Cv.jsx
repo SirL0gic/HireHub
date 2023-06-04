@@ -24,7 +24,7 @@ const UploadModal = ({ isOpen, onRequestClose }) => {
 
     try {
       axios.defaults.baseURL = "http://localhost:4000";
-      const response = await axios.post("/upload", formData);
+      const response = await axios.post("/api/upload", formData);
       console.log(response.data);
       alert("File uploaded successfully.");
     } catch (error) {
