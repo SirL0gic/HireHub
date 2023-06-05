@@ -36,7 +36,7 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
     event.preventDefault();
 
     // Send form data to backend using Axios
-    axios.defaults.baseURL = "http://localhost:4000";
+    axios.defaults.baseURL = "http://18.222.113.94";
     axios
       .post("/api/upload-job-data", formData)
       .then((response) => {

@@ -46,8 +46,25 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Route for testing basic server
-app.get("/test", (req, res) => {
+app.get("/api/test", (req, res) => {
   res.send("This server is working");
+});
+
+
+// Route for test db connection.
+app.get("/api/test-mongodb-connection", (req, res) => {
+  const uri = process.env.MONGODB_URI;
+
+  mongoose
+    .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+      console.log("Connected to MongoDB Atlas!");
+      res.send("MongoDB connection successful");
+    })
+    .catch((error) => {
+      console.log("Error connecting to MongoDB Atlas:", error);
+      res.status(500).send("Error connecting to MongoDB Atlas");
+    });
 });
 
 //Endpoint to fetch all data from the DB.
@@ -64,7 +81,7 @@ app.get("/api/get-all-jobs", async (req, res) => {
 
     console.log("All jobs retrieved from collection");
     client.close();
-    
+
     res.send(result);
     // console.log(result)
   } catch (err) {
@@ -150,25 +167,12 @@ app.post("/api/upload-job-data", async (req, res) => {
   }
 });
 
-//Inside the function, we use await to wait for the MongoClient.connect method to return a Promise, which gives us a client object we can use to interact with the database. We then use the await keyword again to wait for the insertOne method to complete before we move on to closing the connection and sending the response to the client.
-//In the catch block, we handle any errors that occur during the execution of the function.
+// Inside the function, we use await to wait for the MongoClient.connect method to return a Promise,
+// which gives us a client object we can use to interact with the database. We then use the await keyword again to wait for the insertOne method to
+// complete before we move on to closing the connection and sending the response to the client.
+// In the catch block, we handle any errors that occur during the execution of the function.
 
-// Route for test db connection.
-app.get("/api/test", (req, res) => {
-  const mongoose = require("mongoose");
-  const uri = process.env.MONGODB_URI;
 
-  mongoose
-    .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-      console.log("Connected to MongoDB Atlas!");
-    })
-    .catch((error) => {
-      console.log("Error connecting to MongoDB Atlas:", error);
-    });
-
-  res.send("All good" );
-});
 
 //ignore
 const jobss = [
@@ -326,7 +330,12 @@ async function insertJobs(jobss) {
 
 // insertJobs(jobss);
 
+// app.listen(port, () => {
+//   console.log(`Server listening on port ${port}`);
+// });
+
+
 // Start the server
-app.listen(port, () => {
+app.listen(port, "127.0.0.1", () => {
   console.log(`Server listening on port ${port}`);
 });
