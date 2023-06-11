@@ -12,7 +12,7 @@
   .col-one {
     height: 20vh !important;
     width: 200% !important;
-    display: none;
+    display: contents;
   }
 
   .col-three {
@@ -52,14 +52,16 @@
     font-weight: bold;
     overflow-x: hidden;
   }
+
+  .feed-image {
+    display: none;
+  }
+
+  .apply-button {
+    margin-left: 130px !important;
+    margin-top: 0px !important;
+  }
 }
-
-
-
-
-
-
-
 
 /* media query for various screen sizes end */
 
