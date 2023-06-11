@@ -145,7 +145,10 @@ let MainPage = () => {
       {selectedJobInfo && (
         <div className="modal-container">
           <div className="modal-content">
-            <button className="modal-close" onClick={() => setSelectedJobInfo(null)}>
+            <button
+              className="modal-close"
+              onClick={() => setSelectedJobInfo(null)}
+            >
               Close
             </button>
             <AllInformationCard
@@ -165,3 +168,20 @@ let MainPage = () => {
 };
 
 export default MainPage;
+
+// IGNORE THE below
+
+
+// 1. **Added a state variable `selectedJobInfo` to store the selected job information when clicking on a `JobCard` component**: This means that a new state variable called `selectedJobInfo` is introduced in the component. It will be used to store the information of the job that the user selects by clicking on a `JobCard` component.
+
+// 2. **Modified the `handleJobClick` function to set the selected job information in the `selectedJobInfo` state**: The `handleJobClick` function is responsible for updating the `selectedJobInfo` state when a `JobCard` component is clicked. It sets the value of `selectedJobInfo` to the information of the job that was clicked.
+
+// 3. **Conditionally rendered the `AllInformationCard` component inside the `col-three` column only if `selectedJobInfo` is not null**: This means that the `AllInformationCard` component will only be displayed inside the `col-three` column if there is a selected job stored in the `selectedJobInfo` state. If `selectedJobInfo` is null (no job is selected), the `AllInformationCard` component will not be rendered.
+
+// 4. **Added a new `<div>` block after the `Row` component to create a modal container for mobile devices**: A new `<div>` block is inserted after the `Row` component to serve as a container for the modal. This container will be used specifically for mobile devices.
+
+// 5. **Conditionally rendered the modal container and its content only if `selectedJobInfo` is not null**: This means that the modal container and its content (including the `AllInformationCard` component) will only be displayed if there is a selected job stored in the `selectedJobInfo` state. If `selectedJobInfo` is null, the modal container will not be rendered.
+
+// 6. **Added a close button inside the modal content to allow users to close the modal**: The modal content, displayed when a job is selected, includes a close button. This button allows users to close the modal by clicking on it, thereby hiding the selected job information.
+
+// In summary, these changes enable the selection of a job from the `JobCard` component, display its details in the `AllInformationCard` component, and show a modal container on mobile devices to present the selected job information. The modal can be closed using the provided close button.
