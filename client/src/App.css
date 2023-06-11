@@ -4,6 +4,11 @@
   .col-one {
     height: 20vh !important;
     width: 200% !important;
+    display: none;
+  }
+
+  .col-three {
+    display: none;
   }
 }
 /* media query for various screen sizes end */
