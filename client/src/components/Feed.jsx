@@ -10,7 +10,7 @@ import AllInformationCard from "./Information";
 import "../App.css";
 
 let MainPage = () => {
-  //Date
+  // Date
   var date = new Date();
   var dateString = date.toLocaleDateString("en-GB");
 
@@ -25,7 +25,7 @@ let MainPage = () => {
     setModalIsOpen(false);
   };
 
-  //Bool for new job modal
+  // Bool for new job modal
   const [postModalIsOpen, setPostModalIsOpen] = useState(false);
 
   const openPostModal = () => {
@@ -41,6 +41,9 @@ let MainPage = () => {
 
   // state to hold filtered job listings
   const [filteredJobs, setFilteredJobs] = useState([]);
+
+  // state for selected job information
+  const [selectedJobInfo, setSelectedJobInfo] = useState(null);
 
   // function to filter job listings based on search term
   const handleSearch = (searchTerm) => {
@@ -68,10 +71,8 @@ let MainPage = () => {
     fetchData();
   }, []);
 
-  const [allJobInfo, setallJobInfo] = useState("");
-
-  let handlejobclick = (index, item) => {
-    setallJobInfo(item);
+  const handleJobClick = (index, item) => {
+    setSelectedJobInfo(item);
   };
 
   return (
@@ -118,7 +119,7 @@ let MainPage = () => {
                       Title={eachitem.Title}
                       Company={eachitem.Company}
                       Location={eachitem.Location}
-                      onClick={(index, item) => handlejobclick(index, item)}
+                      onClick={handleJobClick}
                     />
                   </li>
                 );
@@ -127,17 +128,38 @@ let MainPage = () => {
           </div>
         </Col>
         <Col className="col-three" sm={7} md={4} lg={7}>
-          <AllInformationCard
-            Title={allJobInfo.Title}
-            Company={allJobInfo.Company}
-            Location={allJobInfo.Location}
-            Position={allJobInfo.Position}
-            Description={allJobInfo.Description}
-            Date={allJobInfo.Date}
-            Contact={allJobInfo.Contact}
-          />
+          {selectedJobInfo && (
+            <AllInformationCard
+              Title={selectedJobInfo.Title}
+              Company={selectedJobInfo.Company}
+              Location={selectedJobInfo.Location}
+              Position={selectedJobInfo.Position}
+              Description={selectedJobInfo.Description}
+              Date={selectedJobInfo.Date}
+              Contact={selectedJobInfo.Contact}
+            />
+          )}
         </Col>
       </Row>
+      {/* Modal for mobile */}
+      {selectedJobInfo && (
+        <div className="modal-container">
+          <div className="modal-content">
+            <button className="modal-close" onClick={() => setSelectedJobInfo(null)}>
+              Close
+            </button>
+            <AllInformationCard
+              Title={selectedJobInfo.Title}
+              Company={selectedJobInfo.Company}
+              Location={selectedJobInfo.Location}
+              Position={selectedJobInfo.Position}
+              Description={selectedJobInfo.Description}
+              Date={selectedJobInfo.Date}
+              Contact={selectedJobInfo.Contact}
+            />
+          </div>
+        </div>
+      )}
     </Container>
   );
 };

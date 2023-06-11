@@ -1,5 +1,13 @@
 /* media query for various screen sizes */
 
+/* Hide the modal container on screens larger than or equal to 768px */
+@media only screen and (min-width: 768px) {
+  .modal-container {
+    display: none;
+  }
+}
+
+/* Media query for screens with a maximum width of 767px */
 @media only screen and (max-width: 767px) {
   .col-one {
     height: 20vh !important;
@@ -10,7 +18,49 @@
   .col-three {
     display: none;
   }
+
+  .modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: block;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  .modal-close {
+    position: absolute;
+    bottom: 20px; /* Updated position to bottom */
+    left: 46%; /* Center horizontally */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    overflow-x: hidden;
+  }
 }
+
+
+
+
+
+
+
+
 /* media query for various screen sizes end */
 
 body {
