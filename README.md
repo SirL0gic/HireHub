@@ -8,8 +8,6 @@ So whether you're a recent graduate just starting your career or a seasoned prof
 
 HireHub was created by me and my friend @fayyaz, and we're excited to share our project with you. As an open-source project, we welcome contributions from the community to help us continue to improve and expand our platform
 
-Please note that this is a beta version of HireHub and is not yet optimized for mobile devices. We are constantly working to improve our platform, and in our final release, we will include more features as well as a mobile-friendly interface.
-
 Demo: 
 ### Video Demo
 Link 1: https://1drv.ms/v/s!Apck3DEmMLfWikuksaOGTuC6-y4H?e=Gb7W7D
