@@ -1,5 +1,5 @@
 //Module Imports
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import axios from "axios";
 
@@ -12,6 +12,8 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
   var date = new Date();
   var dateString = date.toLocaleDateString("en-GB");
 
+  const [submitted, setSubmitted] = useState(false); // Added a state variable to track the submission status
+
   const [formData, setFormData] = useState({
     Title: "",
     Company: "",
@@ -22,6 +24,12 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
     Contact: "",
     Image: "/person.png",
   });
+
+  useEffect(() => {
+    if (!isOpenJobForm) {
+      setSubmitted(false); // Reset the submission status when the modal is closed
+    }
+  }, [isOpenJobForm]);
 
   // updates the form data state using a functional update based on the current input element value.
   const handleInputChange = (event) => {
@@ -35,19 +43,22 @@ let Post = ({ isOpenJobForm, onRequestCloseJobForm }) => {
   let handleSubmit = (event) => {
     event.preventDefault();
 
-    // Send form data to backend using Axios
     axios.defaults.baseURL = "http://18.222.113.94";
     axios
       .post("/api/upload-job-data", formData)
       .then((response) => {
         console.log(response);
-        // handle response as needed
+        setSubmitted(true);
       })
       .catch((error) => {
         console.log(error);
-        // handle error as needed
       });
   };
+
+  // Move the conditional check outside of the handleSubmit function
+  if (!isOpenJobForm || submitted) {
+    return null; // If the form is submitted or the modal is not open, the component returns null, effectively closing the modal/form
+  }
 
   return (
     <Modal
